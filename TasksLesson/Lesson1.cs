@@ -4,45 +4,19 @@ public class Lesson1
 {
 	public static void Main(string[] args)
 	{
-		Console.WriteLine("Integer8(123) = " + Integer8(123));
-        Console.WriteLine("Integer27(5) = " + Integer27(5));
-        Console.WriteLine("Boolean39(1, 1, 2, 2) = " + Boolean39(1, 1, 2, 2));
-        Console.WriteLine("If18(3, 4, 5) = ");
-        If18(3, 4, 5);
+		foreach(int i in Array74(new []{ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 }))
+		{
+            Console.Write(i + " ");
+		}
 
-        Console.WriteLine("If27(3.5) = ");
-        If27(3.5f);
-
-        Console.WriteLine("For10(3) = ");
-        For10(3);
-
-        Console.WriteLine("For25(3, 3) = ");
-        For25(3, 3);
-
-        Console.WriteLine("While10(3) = ");
-        While10(3);
-
-        Console.WriteLine("Series23(3, new float[] {1, 2, 3}) = ");
-        Series23(3, new float[] {1, 2, 3});
-
-        Console.WriteLine("Proc28(3) = " + Proc28(3));
-        Console.WriteLine("Proc29(3) = " + Proc29(3));
-
-        Console.WriteLine("Minmax23(3, new int[] {1, 2, 3}) = ");
-        Minmax23(3, new int[] {1, 2, 3});
-
-        Console.WriteLine("Minmax28(4, new int[] {1, 2, 3, 4}) = ");
-        Minmax28(4, new int[] {1, 2, 3, 4});
-
-        Console.WriteLine("Array28(new int[] {1, 2, 3, 4}) = " + Array28(new int[] {1, 2, 3, 4}));
-        Console.WriteLine("Array47(new int[] {1, 2, 3, 4}) = " + Array47(new int[] {1, 2, 3, 4}));
-        Console.WriteLine("Array74(new int[] {1, 2, 3, 4}) = " + Array74(new int[] {1, 2, 3, 4}));
+		Console.WriteLine();
 	}
 
-	private static int Integer8(int a)
+	private static int Integer8(int ab)
 	{
-		int b = a / 10 + a % 10 * 10;
-		return b;
+		int a = ab / 10;
+		int b = (ab % 10) * 10;
+		return b + a;
 	}
 
 	private static int Integer27(int m)
@@ -52,7 +26,13 @@ public class Lesson1
 
 	private static bool Boolean39(int x1, int x2, int y1, int y2)
 	{
-		return Math.Abs(x1 - x2) <= 1 && Math.Abs(y1 - y2) <= 1 && (x1 != x2 || y1 != y2) && (x1 + y1) % 2 == (x2 + y2) % 2;
+		int xDistance = Math.Abs(x1 - x2);
+		int yDistance = Math.Abs(y1 - y2);
+		bool xyNotIdentical = (x1 != x2) || (y1 != y2);
+		bool sumModuloIdentical = (x1 + y1) % 2 == (x2 + y2) % 2;
+
+		bool result = xDistance <= 1 && yDistance <= 1 && xyNotIdentical && sumModuloIdentical;
+		return result;
 	}
 
 	private static void If18(int a, int b, int c)
@@ -70,25 +50,25 @@ public class Lesson1
 			Console.Write(1);
 		}
 
-		Console.WriteLine();
+		Console.WriteLine ();
 	}
 
-	private static void If27(float x)
+	private static int If27(float x)
 	{
 		if (x < 0)
 		{
-			Console.Write(0);
+			return 0;
 		}
 		else if (x >= 0 && x < 1 || x >= 2 && x < 3)
 		{
-			Console.Write(1);
+			return 1;
 		}
-		else if(x >= 1 && x < 2 || x >= 3 && x < 4)
+		else if (x >= 1 && x < 2 || x >= 3 && x < 4)
 		{
-			Console.Write(-1);
+			return -1;
 		}
 
-		Console.WriteLine();
+		return 0;
 	}
 
 	private static void For10(int n)
@@ -98,8 +78,9 @@ public class Lesson1
 		{
 			sum += 1.0 / i;
 		}
+
 		Console.Write(sum);
-		Console.WriteLine();
+		Console.WriteLine ();
 	}
 
 	private static void For25(float x, int n)
@@ -108,83 +89,87 @@ public class Lesson1
 		float result = x;
 		int i;
 
-		for (i = 2; i <= n; ++i) {
+		for (i = 2; i <= n; ++i)
+		{
 			x1 *= -1 * x;
 			result += x1 / i;
 		}
+
 		Console.Write(result + " ");
 		Console.Write(Math.Log(1 + x));
-		Console.WriteLine();
+		Console.WriteLine ();
 	}
 
-	private static void While10(int n)
+	private static int While10(int n)
 	{
 		int k = 0;
 		int temp = 3;
 
-		while (temp <= n)
+		while (temp < n)
 		{
 			temp *= 3;
 			++k;
 		}
 
-		Console.Write(k);
-		Console.WriteLine();
+		return k;
 	}
 
-	private static void Series23(int n, float[] numbers)
+	private static int Series23(int n, float[] numbers)
 	{
 		for (int i = 1; i < n - 1; i++)
 		{
 			if (numbers[i] > numbers[i - 1] && numbers[i] > numbers[i + 1])
 			{
-				Console.Write(i);
-				break;
+				return i;
 			}
 			else if (numbers[i] < numbers[i - 1] && numbers[i] < numbers[i + 1])
 			{
-				Console.Write(i);
-				break;
+				return i;
 			}
-			else if (numbers[i] > numbers[i - 1] && numbers[i] < numbers[i + 1])
-			{
-				Console.Write(0);
-				break;
-			}
-			else if (numbers[i] < numbers[i - 1] && numbers[i] > numbers[i + 1])
-			{
-				Console.Write(0);
-				break;
-			}
+
+			return 0;
 		}
 
-		Console.WriteLine();
+		return 0;
 	}
 
-	private static bool Proc28(int N)
+
+	private static int Proc28(int[] numbers)
 	{
-		if (N <= 1)
+		int primesAmount = 0;
+
+		for (int i = 0; i < numbers.Length; i++)
 		{
-			return false;
-		}
-		for (int i = 2; i < N; i++)
-		{
-			if (N % i == 0)
+			if (numbers[i].IsPrime ())
 			{
-				return false;
+				primesAmount++;
 			}
 		}
-		return true;
+
+		return primesAmount;
 	}
 
-	private static int Proc29(int K)
+	private static int Proc29(int[] numbers)
+	{
+        int digitsAmount = 0;
+
+		for (int i = 0; i < numbers.Length; i++)
+		{
+			digitsAmount += DigitN (numbers[i]);
+		}
+
+		return digitsAmount;
+	}
+
+	private static int DigitN(int k)
 	{
 		int count = 0;
-		while (K > 0)
+		while (k > 0)
 		{
+			k /= 10;
 			count++;
-			K /= 10;
 		}
+
 		return count;
 	}
 
@@ -222,8 +207,9 @@ public class Lesson1
 				maxIndex3 = i;
 			}
 		}
+
 		Console.Write(max + " " + max2 + " " + max3);
-		Console.WriteLine();
+		Console.WriteLine ();
 	}
 
 	private static void Minmax28(int n, int[] num)
@@ -244,16 +230,19 @@ public class Lesson1
 					max = count;
 					index = i - count;
 				}
+
 				count = 0;
 			}
 		}
+
 		if (count > max)
 		{
 			max = count;
 			index = n - count;
 		}
+
 		Console.Write(index + " " + max);
-		Console.WriteLine();
+		Console.WriteLine ();
 	}
 
 	private static int Array28(int[] array)
@@ -269,6 +258,7 @@ public class Lesson1
 				}
 			}
 		}
+
 		return array[k];
 	}
 
@@ -277,15 +267,16 @@ public class Lesson1
 		int k = 0;
 		for (int i = 0; i < array.Length - 1; i++)
 		{
-			if (array[i] != array[i + 1])
+			if (!array.Contains(array[i]))
 			{
 				k++;
 			}
 		}
+
 		return k;
 	}
 
-	private static string Array74(int[] array)
+	private static int[] Array74(int[] array)
 	{
 		int minIndex = 0;
 		for (int i = 1; i < array.Length; i++)
@@ -309,14 +300,35 @@ public class Lesson1
 		{
 			array[i] = 0;
 		}
+		int tempMin = minIndex;
 
-		string str = "";
+		tempMin = Math.Min(minIndex, maxIndex);
+		maxIndex = Math.Max(minIndex, maxIndex);
 
-		for (int i = 0; i < array.Length; i++)
+		minIndex = tempMin;
+
+		for (int i = minIndex + 1; i < maxIndex; i++)
 		{
-			str += array[i] + " ";
+			array[i] = 0;
 		}
 
-		return str;
+		return array;
+
+	}
+}
+
+public static class IntegerExtensions
+{
+	public static bool IsPrime(this int number)
+	{
+		if (number == 1) return false;
+		if (number == 2) return true;
+
+		for (int i = 2; i <= Math.Ceiling(Math.Sqrt(number)); ++i)
+		{
+			if (number % i == 0) return false;
+		}
+
+		return true;
 	}
 }
