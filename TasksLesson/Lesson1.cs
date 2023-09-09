@@ -305,7 +305,7 @@ public class Lesson1
 			}
 		}
 
-		for (int i = minIndex; i < maxIndex; i++)
+		for (int i = minIndex + 1; i < maxIndex; i++)
 		{
 			array[i] = 0;
 		}
