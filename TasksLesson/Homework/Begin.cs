@@ -328,20 +328,3 @@ public class Begin
         return (x, y);
     }
 }
-
-public class Point
-{
-    public float X { get; }
-    public float Y { get; }
-
-    public Point(float x, float y)
-    {
-        X = x;
-        Y = y;
-    }
-
-    public static float Distance(Point p1, Point p2)
-    {
-        return MathF.Sqrt((p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y));
-    }
-}
