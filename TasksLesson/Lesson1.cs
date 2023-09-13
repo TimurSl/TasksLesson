@@ -317,18 +317,3 @@ public class Lesson1
 	}
 }
 
-public static class IntegerExtensions
-{
-	public static bool IsPrime(this int number)
-	{
-		if (number == 1) return false;
-		if (number == 2) return true;
-
-		for (int i = 2; i <= Math.Ceiling(Math.Sqrt(number)); ++i)
-		{
-			if (number % i == 0) return false;
-		}
-
-		return true;
-	}
-}
