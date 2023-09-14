@@ -132,14 +132,14 @@ public class Integer
 		var result2 = TasksLesson.Homework.Integer.Integer10(456);
 		var result3 = TasksLesson.Homework.Integer.Integer10(789);
 
-		Assert.That(result1.a, Is.EqualTo(1));
 		Assert.That(result1.b, Is.EqualTo(2));
+		Assert.That(result1.c, Is.EqualTo(3));
 
-		Assert.That(result2.a, Is.EqualTo(4));
 		Assert.That(result2.b, Is.EqualTo(5));
+		Assert.That(result2.c, Is.EqualTo(6));
 
-		Assert.That(result3.a, Is.EqualTo(7));
 		Assert.That(result3.b, Is.EqualTo(8));
+		Assert.That(result3.c, Is.EqualTo(9));
 	}
 
 	[Test]

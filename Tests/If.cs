@@ -140,9 +140,9 @@ public class If
 	[Test]
 	public void If12()
 	{
-		Assert.That(TasksLesson.Homework.If.If12(2, 3, 4), Is.EqualTo(4));
-		Assert.That(TasksLesson.Homework.If.If12(4, 1, 5), Is.EqualTo(5));
-		Assert.That(TasksLesson.Homework.If.If12(0, -1, -125), Is.EqualTo(0));
+		Assert.That(TasksLesson.Homework.If.If12(2, 3, 4), Is.EqualTo(2));
+		Assert.That(TasksLesson.Homework.If.If12(4, 1, 5), Is.EqualTo(1));
+		Assert.That(TasksLesson.Homework.If.If12(0, -1, -125), Is.EqualTo(-125));
 	}
 
 	[Test]

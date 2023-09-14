@@ -59,11 +59,12 @@ public class Integer
 		return abc / 100;
 	}
 
-	public static (int a, int b) Integer10(int abc)
+	public static (int b, int c) Integer10(int abc)
 	{
 		int a = abc / 100;
 		int b = abc / 10 % 10;
-		return (a, b);
+        int c = abc % 10;
+		return (b, c);
 	}
 
 	public static (int sum, int multiply) Integer11(int abc)

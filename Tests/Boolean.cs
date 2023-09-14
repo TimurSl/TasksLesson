@@ -218,7 +218,7 @@ public class Boolean
 	[Test]
 	public void Boolean27()
 	{
-		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean27(3, 8));
+		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean27(3, -8));
 		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean27(-2, 6));
 		Assert.IsFalse(TasksLesson.Homework.Boolean.Boolean27(-1, -2));
 	}
@@ -258,8 +258,8 @@ public class Boolean
 	[Test]
 	public void Boolean32()
 	{
-		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean32(9, 6, 3));
-		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean32(4, 8, 4));
+		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean32(5, 12, 13));
+		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean32(7, 24, 25));
 		Assert.IsFalse(TasksLesson.Homework.Boolean.Boolean32(9, 2, 3));
 	}
 

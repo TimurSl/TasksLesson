@@ -152,7 +152,7 @@ public class Boolean
 
     public static bool Boolean27(int x, int y)
     {
-        return (x < 0 && y > 0) || (x > 0 && y > 0);
+        return (x < 0 && y > 0) || (x > 0 && y < 0);
     }
 
     public static bool Boolean28(int x, int y)
@@ -181,7 +181,7 @@ public class Boolean
 
     public static bool Boolean32(int a, int b, int c)
     {
-        return (a == b + c) || (c == b + a) || (b == c + a);
+        return (a * a + b * b == c * c) || (c * c + b * b == a * a) || (a * a + c * c == b * b);
     }
 
     public static bool Boolean33(int a, int b, int c)
