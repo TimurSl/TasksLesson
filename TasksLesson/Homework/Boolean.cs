@@ -199,16 +199,19 @@ public class Boolean
         return (x1 + y1) % 2 == (x2 + y2) % 2;
     }
 
+    // Тура
     public static bool Boolean36(int x1, int y1, int x2, int y2)
     {
         return (x1 == x2) || (y1 == y2);
     }
 
+    // Король
     public static bool Boolean37(int x1, int y1, int x2, int y2)
     {
         return Math.Abs(x1 - x2) <= 1 && Math.Abs(y1 - y2) <= 1;
     }
 
+    // Слон
     public static bool Boolean38(int x1, int y1, int x2, int y2)
     {
         return Math.Abs(x1 - x2) == Math.Abs(y1 - y2);
@@ -216,7 +219,7 @@ public class Boolean
 
     public static bool Boolean39(int x1, int y1, int x2, int y2)
     {
-        return Boolean37(x1, y1, x2, y2) || Boolean38(x1, y1, x2, y2);
+        return Boolean36(x1, y1, x2, y2) || Boolean38(x1, y1, x2, y2);
     }
 
     public static bool Boolean40(int x1, int y1, int x2, int y2)
