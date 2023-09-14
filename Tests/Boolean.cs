@@ -316,7 +316,7 @@ public class Boolean
 	{
 		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean39(1, 1, 3, 3));
 		Assert.IsTrue(TasksLesson.Homework.Boolean.Boolean39(4, 3, 8, 7));
-		Assert.IsFalse(TasksLesson.Homework.Boolean.Boolean39(1, 1, 1, 8));
+		Assert.IsFalse(TasksLesson.Homework.Boolean.Boolean39(-1, 123, 42, 14));
 	}
 
 
