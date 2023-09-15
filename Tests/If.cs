@@ -254,7 +254,7 @@ public class If
 	[Test]
 	public void If21()
 	{
-		Assert.That(TasksLesson.Homework.If.If21(0, 0), Is.EqualTo(1));
+		Assert.That(TasksLesson.Homework.If.If21(0, 0), Is.EqualTo(0));
 		Assert.That(TasksLesson.Homework.If.If21(1, 0), Is.EqualTo(2));
 		Assert.That(TasksLesson.Homework.If.If21(-1, 1), Is.EqualTo(3));
 	}
@@ -339,7 +339,7 @@ public class If
 		Assert.That(result2, Is.EqualTo(1));
 		Assert.That(result3, Is.EqualTo(-1));
 		Assert.That(result4, Is.EqualTo(1));
-		Assert.That(result5, Is.EqualTo(0));
+		Assert.That(result5, Is.EqualTo(1));
 	}
 
 	[Test]

@@ -310,6 +310,11 @@ public class If
 
 	public static int If21(int x, int y)
 	{
+		if (x == 0 && y == 0)
+		{
+			return 0;
+		}
+
 		if (x == 0)
 		{
 			return 1;
@@ -433,12 +438,12 @@ public class If
 			return 0;
 		}
 
-		if (x >= 0 && x < 1 || x >= 2 && x < 3)
+		if (x >= 0 && x < 1 || x >= 2)
 		{
 			return 1;
 		}
 
-		if (x >= 1 && x < 2 || x >= 3 && x < 4)
+		if (x >= 1 && x < 2 || x >= 3)
 		{
 			return -1;
 		}
