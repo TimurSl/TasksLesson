@@ -391,4 +391,11 @@ public class Integer
 		Assert.That(result2, Is.EqualTo(21));
 		Assert.That(result3, Is.EqualTo(91));
 	}
+
+	[TestCase(49, ExpectedResult = false)]
+	[TestCase(53, ExpectedResult = true)]
+	public bool IsPrimeTest(int input)
+	{
+		return input.IsPrime ();
+	}
 }

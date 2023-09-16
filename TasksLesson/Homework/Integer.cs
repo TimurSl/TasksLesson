@@ -19,12 +19,7 @@ public class Integer
 
 	public static int Integer4(int a, int b)
 	{
-		if (a > b)
-		{
-			return a / b;
-		}
-
-		return 0;
+		return a / b;
 	}
 
 	public static int Integer5(int a, int b)
@@ -61,17 +56,21 @@ public class Integer
 
 	public static (int b, int c) Integer10(int abc)
 	{
-		int a = abc / 100;
-		int b = abc / 10 % 10;
-        int c = abc % 10;
+		(int a, int b, int c) = SplitNumber (abc);
 		return (b, c);
 	}
 
-	public static (int sum, int multiply) Integer11(int abc)
+	private static (int a, int b, int c) SplitNumber(int abc)
 	{
 		int a = abc / 100;
 		int b = abc / 10 % 10;
 		int c = abc % 10;
+		return (a, b, c);
+	}
+
+	public static (int sum, int multiply) Integer11(int abc)
+	{
+		(int a, int b, int c) = SplitNumber (abc);
 
 		int sum = a + b + c;
 		int multiply = a * b * c;
@@ -81,41 +80,31 @@ public class Integer
 
 	public static int Integer12(int abc)
 	{
-		int a = abc / 100;
-		int b = abc / 10 % 10;
-		int c = abc % 10;
+		(int a, int b, int c) = SplitNumber (abc);
 		return c * 100 + b * 10 + a;
 	}
 
 	public static int Integer13(int abc)
 	{
-		int a = abc / 100;
-		int b = abc / 10 % 10;
-		int c = abc % 10;
+		(int a, int b, int c) = SplitNumber (abc);
 		return b * 100 + c * 10 + a;
 	}
 
 	public static int Integer14(int abc)
 	{
-		int a = abc / 100;
-		int b = abc / 10 % 10;
-		int c = abc % 10;
+		(int a, int b, int c) = SplitNumber (abc);
 		return c * 100 + a * 10 + b;
 	}
 
 	public static int Integer15(int abc)
 	{
-		int a = abc / 100;
-		int b = abc / 10 % 10;
-		int c = abc % 10;
+		(int a, int b, int c) = SplitNumber (abc);
 		return b * 100 + a * 10 + c;
 	}
 
 	public static int Integer16(int abc)
 	{
-		int a = abc / 100;
-		int b = abc / 10 % 10;
-		int c = abc % 10;
+		(int a, int b, int c) = SplitNumber (abc);
 		return a * 100 + c * 10 + b;
 	}
 
