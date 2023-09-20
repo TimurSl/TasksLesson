@@ -1,3 +1,3 @@
 ﻿using TasksLesson;
 
-Lesson1.Main(args);
+TasksLesson.Homework.For.Main(args);
