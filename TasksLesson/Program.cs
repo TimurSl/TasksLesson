@@ -1,3 +1,3 @@
 ﻿using TasksLesson;
 
-TasksLesson.Homework.MinMax.Main(args);
+TasksLesson.Homework.Array.Main(args);
