@@ -166,10 +166,10 @@ public class Series
 		{
 			if (numbers[i] == 0)
 			{
-				Console.WriteLine(i);
 				break;
 			}
-			else if (numbers[i].IsPositive () && numbers[i].IsEven ())
+
+			if (numbers[i].IsPositive () && numbers[i].IsEven ())
 			{
 				sum += numbers[i];
 			}
@@ -185,10 +185,10 @@ public class Series
 		{
 			if (numbers[i] == 0)
 			{
-				Console.WriteLine(i);
 				break;
 			}
-			else if (numbers[i] < k)
+
+			if (numbers[i] < k)
 			{
 				count++;
 			}
@@ -204,10 +204,10 @@ public class Series
 		{
 			if (numbers[i] == 0)
 			{
-				Console.WriteLine(i);
 				break;
 			}
-			else if (numbers[i] > k)
+
+			if (numbers[i] > k)
 			{
 				count = i;
 				break;
@@ -227,7 +227,8 @@ public class Series
 				Console.WriteLine(i);
 				break;
 			}
-			else if (numbers[i] > k)
+
+			if (numbers[i] > k)
 			{
 				count = i;
 			}
@@ -238,20 +239,20 @@ public class Series
 
 	public static void Series17(float[] numbers, float b, float n)
 	{
-		bool isAlreadyWritten = true;
+		bool isAlreadyWritten = false;
 
 		for (int i = 1; i <= n; i++)
 		{
-			if ((b <= numbers[i]) && isAlreadyWritten)
+			if ((b <= numbers[i]) && !isAlreadyWritten)
 			{
 				Console.WriteLine(b);
-				isAlreadyWritten = false;
+				isAlreadyWritten = true;
 			}
 
 			Console.WriteLine(numbers[i]);
 		}
 
-		if (isAlreadyWritten)
+		if (!isAlreadyWritten)
 		{
 			Console.WriteLine(b);
 		}
@@ -259,13 +260,10 @@ public class Series
 
 	public static void Series18(int[] numbers, int n)
 	{
-		var uniqueNumbers = new List<int> ();
+		var uniqueNumbers = new HashSet<int> ();
 		for (int i = 0; i < n; i++)
 		{
-			if (!uniqueNumbers.Contains(numbers[i]))
-			{
-				uniqueNumbers.Add(numbers[i]);
-			}
+			uniqueNumbers.Add(numbers[i]);
 		}
 
 		foreach(var number in uniqueNumbers)
@@ -332,7 +330,8 @@ public class Series
 				Console.WriteLine(i + 1);
 				break;
 			}
-			else if (numbers[i] < numbers[i + 1])
+
+			if (numbers[i] < numbers[i + 1])
 			{
 				Console.WriteLine(0);
 				break;
@@ -354,7 +353,8 @@ public class Series
 				Console.WriteLine(i);
 				break;
 			}
-			else if (isIncreasing || isDecreasing)
+
+			if (isIncreasing || isDecreasing)
 			{
 				Console.WriteLine(0);
 				break;
@@ -495,7 +495,8 @@ public class Series
 				Console.WriteLine(i);
 				break;
 			}
-			else if (numbers[i] != 2)
+
+			if (numbers[i] != 2)
 			{
 				Console.WriteLine(0);
 				break;
@@ -512,7 +513,8 @@ public class Series
 				Console.WriteLine(i);
 				break;
 			}
-			else if (numbers[i] != 2)
+
+			if (numbers[i] != 2)
 			{
 				Console.WriteLine(0);
 				break;
@@ -535,7 +537,8 @@ public class Series
 				Console.WriteLine(sum);
 				break;
 			}
-			else if (numbers[i] != 2)
+
+			if (numbers[i] != 2)
 			{
 				Console.WriteLine(0);
 				break;
@@ -594,12 +597,14 @@ public class Series
 				Console.WriteLine(1);
 				break;
 			}
-			else if (numbers[i] > numbers[i + 1])
+
+			if (numbers[i] > numbers[i + 1])
 			{
 				Console.WriteLine(-1);
 				break;
 			}
-			else if (numbers[i] == numbers[i + 1])
+
+			if (numbers[i] == numbers[i + 1])
 			{
 				Console.WriteLine(0);
 				break;
