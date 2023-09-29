@@ -4,8 +4,7 @@ public class Array
 {
 	public static void Main(string[] args)
 	{
-		LogArray(Array10(Range(18)).even);
-		LogArray(Array10(Range(18)).odd);
+		Console.WriteLine(Array20(Range(5), 2, 4));
 	}
 
 	public static void LogArray(int[] array)
@@ -171,5 +170,121 @@ public class Array
 
 
 		return (evenHashSet.ToArray (), oddHashSet.ToArray ());
+	}
+
+	public static int[] Array11(int[] array, int k)
+	{
+		int[] array2 = new int[array.Length / k];
+		for (int i = 0; i < array2.Length; i++)
+		{
+			array2[i] = array[i * k];
+		}
+
+		return array2;
+	}
+
+	public static int[] Array12(int[] array)
+	{
+		int[] array2 = new int[array.Length / 2];
+		for (int i = 0; i < array2.Length; i++)
+		{
+			array2[i] = array[i * 2];
+		}
+
+		return array2;
+	}
+
+	public static int[] Array13(int[] array)
+	{
+		List<int> list = new List<int> ();
+		for (int i = array.Length - 1; i >= 0; i -= 2)
+		{
+			list.Add(array[i]);
+		}
+
+		return list.ToArray ();
+	}
+
+	public static int[] Array14(int[] array)
+	{
+		int[] arrayOdd = Array8(array).OrderBy(x => x).ToArray ();
+		int[] arrayEven = Array9(array).OrderBy(x => x).ToArray ();
+
+		List<int> arrayMerged = new List<int> ();
+
+		arrayMerged.AddRange(arrayEven);
+		arrayMerged.AddRange(arrayOdd);
+
+
+		return arrayMerged.ToArray ();
+	}
+
+	public static int[] Array15(int[] array)
+	{
+		int[] arrayEven = Array9(array).OrderBy(x => x).Reverse ().ToArray ();
+		int[] arrayOdd = Array8(array).OrderBy(x => x).ToArray ();
+
+		List<int> listMerge = new List<int> ();
+
+		listMerge.AddRange(arrayOdd);
+		listMerge.AddRange(arrayEven);
+
+		return listMerge.ToArray ();
+	}
+
+	public static (int[] given, int[] returned) Array16(int[] array)
+	{
+		List<int> list = new List<int> ();
+
+		int n = array.Length;
+		int forSize = n / 2;
+
+		for (int i = 0; i < forSize; i++)
+		{
+			list.Add(array[n - i - 1]);
+		}
+
+		return (array, list.ToArray ());
+	}
+
+
+	public static int Array18(int[] array)
+	{
+		int k = 0;
+		for (int i = 0; i < array.Length; i++)
+		{
+			if (array[i] < array[^1])
+			{
+				k = array[i];
+				break;
+			}
+		}
+
+		return k;
+	}
+
+	public static int Array19(int[] array)
+	{
+		int k = 0;
+		for (int i = 0; i < array.Length; i++)
+		{
+			if (array[i] > array[0] && array[i] < array[^1])
+			{
+				k = i;
+			}
+		}
+
+		return k;
+	}
+
+	public static int Array20(int[] array, int k, int l)
+	{
+		int sum = 0;
+		for (int i = k - 1; i < l; i++)
+		{
+			sum += array[i];
+		}
+
+		return sum;
 	}
 }
