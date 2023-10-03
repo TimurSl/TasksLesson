@@ -4,7 +4,25 @@ public class Array
 {
 	public static void Main(string[] args)
 	{
-		Console.WriteLine(Array20(Range(5), 2, 4));
+
+	}
+
+	public static bool IsLocalMinimum(int[] array, int index)
+	{
+		if (index == 0 || index == array.Length - 1)
+		{
+			return false;
+		}
+		return array[index] < array[index - 1] && array[index] < array[index + 1];
+	}
+
+	public static bool IsLocalMaximum(int[] array, int index)
+	{
+		if (index == 0 || index == array.Length - 1)
+		{
+			return false;
+		}
+		return array[index] > array[index - 1] && array[index] > array[index + 1];
 	}
 
 	public static void LogArray(int[] array)
@@ -286,5 +304,387 @@ public class Array
 		}
 
 		return sum;
+	}
+
+	public static void Array21(int n, int k, int l)
+	{
+		int[] a = new int[n];
+		Random rand = new Random ();
+
+		for (int i = 0; i < n; ++i)
+		{
+			a[i] = rand.Next(1, 100);
+		}
+
+		int sum = 0;
+		for (int i = k - 1; i < l; i++)
+		{
+			sum += a[i];
+		}
+
+		if (l - k + 1 != 0)
+		{
+			float average = (float) sum / (float) (l - k + 1);
+			Console.WriteLine($"Average: {average}");
+		}
+		else
+		{
+			Console.WriteLine("Invalid range (l - k + 1 is zero)");
+		}
+	}
+
+	public static int Array22(int[] array, int k, int l)
+	{
+		int sum = 0;
+
+		for (int i = 0; i < array.Length; ++i)
+		{
+			if (i < k - 1 || i >= l)
+			{
+				sum += array[i];
+			}
+		}
+
+		return sum;
+	}
+
+	public static double Array23(int[] array, int k, int l)
+	{
+		int sum = 0;
+		int count = 0;
+
+		for (int i = 0; i < array.Length; ++i)
+		{
+			if (i < k - 1 || i >= l)
+			{
+				sum += array[i];
+				count++;
+			}
+		}
+
+		return (double) sum / count;
+	}
+
+	public static bool Array24(int[] array)
+	{
+		if (array.Length <= 2)
+		{
+			return true;
+		}
+
+		int diff = array[1] - array[0];
+
+		for (int i = 2; i < array.Length; i++)
+		{
+			if (array[i] - array[i - 1] != diff)
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public static int Array25(int[] array)
+	{
+		if (array.Length <= 2)
+		{
+			return 0;
+		}
+
+		int ratio = array[1] / array[0];
+
+		for (int i = 2; i < array.Length; i++)
+		{
+			if (array[i] / array[i - 1] != ratio)
+			{
+				return 0;
+			}
+		}
+
+		return ratio;
+	}
+
+	public static int Array26(int[] array)
+	{
+		for (int i = 1; i < array.Length; i++)
+		{
+			if ((array[i] > 0 && array[i - 1] > 0) || (array[i] < 0 && array[i - 1] < 0))
+			{
+				return 0;
+			}
+		}
+
+		return System.Array.FindIndex(array,
+			x => (x > 0 && array[System.Array.IndexOf(array, x) - 1] < 0) ||
+			     (x < 0 && array[System.Array.IndexOf(array, x) - 1] > 0)) + 1;
+	}
+
+	public static int Array27(int[] array)
+	{
+		for (int i = 1; i < array.Length; i++)
+		{
+			if ((array[i] > 0 && array[i - 1] > 0) || (array[i] < 0 && array[i - 1] < 0))
+			{
+				return 0;
+			}
+		}
+
+		return -1;
+	}
+
+	public static int Array28(int[] array)
+	{
+		if (array.Length == 0)
+		{
+			return -1;
+		}
+
+		int min = array[1];
+
+		for (int i = 3; i < array.Length; i += 2)
+		{
+			if (array[i] < min)
+			{
+				min = array[i];
+			}
+		}
+
+		return min;
+	}
+
+	public static int Array29(int[] array)
+	{
+		if (array.Length == 0)
+		{
+			return -1;
+		}
+
+		int max = array[0];
+
+		for (int i = 2; i < array.Length; i += 2)
+		{
+			if (array[i] > max)
+			{
+				max = array[i];
+			}
+		}
+
+		return max;
+	}
+
+	public static int[] Array30(int[] array)
+	{
+		int count = 0;
+		int[] result = new int[array.Length];
+
+		for (int i = 0; i < array.Length - 1; i++)
+		{
+			if (array[i] > array[i + 1])
+			{
+				result[count] = i;
+				count++;
+			}
+		}
+
+		System.Array.Resize(ref result, count);
+
+		return result;
+	}
+
+	public static int[] Array31(int[] array)
+	{
+		int count = 0;
+		int[] result = new int[array.Length];
+
+		for (int i = array.Length - 2; i >= 0; i--)
+		{
+			if (array[i] > array[i + 1])
+			{
+				result[count] = i;
+				count++;
+			}
+		}
+
+		System.Array.Resize(ref result, count);
+
+		return result;
+	}
+
+	public static int Array32(int[] array)
+	{
+		for (int i = 1; i < array.Length - 1; i++)
+		{
+			if (array[i] < array[i - 1] && array[i] < array[i + 1])
+			{
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	public static int Array33(int[] array)
+	{
+		for (int i = array.Length - 2; i > 0; i--)
+		{
+			if (array[i] > array[i - 1] && array[i] > array[i + 1])
+			{
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	public static int Array34(int[] array)
+	{
+		int maxLocalMin = int.MinValue;
+
+		for (int i = 1; i < array.Length - 1; i++)
+		{
+			if (array[i] < array[i - 1] && array[i] < array[i + 1] && array[i] > maxLocalMin)
+			{
+				maxLocalMin = array[i];
+			}
+		}
+
+		return maxLocalMin == int.MinValue ? -1 : maxLocalMin;
+	}
+
+	public static int Array35(int[] array)
+	{
+		int maxLocalMax = int.MinValue;
+
+		for (int i = 1; i < array.Length - 1; i++)
+		{
+			if (array[i] > array[i - 1] && array[i] > array[i + 1] && array[i] > maxLocalMax)
+			{
+				maxLocalMax = array[i];
+			}
+		}
+
+		return maxLocalMax == int.MinValue ? 0 : maxLocalMax;
+	}
+
+	public static int Array36(int[] array)
+	{
+		int maxNonLocal = int.MinValue;
+
+		for (int i = 0; i < array.Length; i++)
+		{
+			if (!IsLocalMinimum(array, i) && !IsLocalMaximum(array, i) && array[i] > maxNonLocal)
+			{
+				maxNonLocal = array[i];
+			}
+		}
+
+		return maxNonLocal == int.MinValue ? 0 : maxNonLocal;
+	}
+
+
+	public static int Array37(int[] array)
+	{
+		int count = 0;
+		bool increasing = false;
+
+		for (int i = 1; i < array.Length; i++)
+		{
+			if (array[i] > array[i - 1])
+			{
+				if (!increasing)
+				{
+					count++;
+					increasing = true;
+				}
+			}
+			else
+			{
+				increasing = false;
+			}
+		}
+
+		return count;
+	}
+
+	public static int Array38(int[] array)
+	{
+		int count = 0;
+		bool decreasing = false;
+
+		for (int i = 1; i < array.Length; i++)
+		{
+			if (array[i] < array[i - 1])
+			{
+				if (!decreasing)
+				{
+					count++;
+					decreasing = true;
+				}
+			}
+			else
+			{
+				decreasing = false;
+			}
+		}
+
+		return count;
+	}
+
+	public static int Array39(int[] array)
+	{
+		int count = 0;
+		bool increasing = false;
+		bool decreasing = false;
+
+		for (int i = 1; i < array.Length; i++)
+		{
+			if (array[i] > array[i - 1])
+			{
+				if (!increasing && !decreasing)
+				{
+					count++;
+					increasing = true;
+				}
+
+				decreasing = false;
+			}
+			else if (array[i] < array[i - 1])
+			{
+				if (!decreasing && !increasing)
+				{
+					count++;
+					decreasing = true;
+				}
+
+				increasing = false;
+			}
+			else
+			{
+				increasing = false;
+				decreasing = false;
+			}
+		}
+
+		return count;
+	}
+
+	public static int Array40(int[] array, int R)
+	{
+		int closestElement = array[0];
+		int minDifference = Math.Abs(array[0] - R);
+
+		for (int i = 1; i < array.Length; i++)
+		{
+			int difference = Math.Abs(array[i] - R);
+
+			if (difference < minDifference)
+			{
+				minDifference = difference;
+				closestElement = array[i];
+			}
+		}
+
+		return closestElement;
 	}
 }
