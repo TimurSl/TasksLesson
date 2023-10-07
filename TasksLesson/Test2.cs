@@ -22,13 +22,7 @@ public class Test2
 
 	public static void Main(string[] args)
 	{
-		Array137(new[]
-		{
-			new Point(1, 1), new Point(2, 2), new Point(3, 3),
-			new Point(4, 4), new Point(5, 5), new Point(6, 6),
-			new Point(7, 7), new Point(8, 8), new Point(9, 9),
-			new Point(10, 10), new Point(11, 11), new Point(12, 12),
-		});
+		Series27(5, new float[] {1, 2, 3, 4, 5});
 	}
 
 	public static int Integer26(int k)
@@ -135,13 +129,7 @@ public class Test2
 	{
 		for (int i = 0; i < n; i++)
 		{
-			float pow = 1;
-			for (int j = 0; j < i; j++)
-			{
-				pow *= numbers[i];
-			}
-
-			Console.WriteLine(pow);
+			Console.WriteLine(MathF.Pow(numbers[i], i + 1));
 		}
 	}
 
