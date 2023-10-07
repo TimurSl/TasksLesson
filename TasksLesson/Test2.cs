@@ -144,14 +144,6 @@ public class Test2
 		return result;
 	}
 
-	public static void Proc35(int[] numbers)
-	{
-		for (int i = 0; i < numbers.Length; i++)
-		{
-			Console.WriteLine(Fact2(numbers[i]));
-		}
-	}
-
 	public static float Leng(Point a, Point b)
 	{
 		float x = a.X - b.X;
