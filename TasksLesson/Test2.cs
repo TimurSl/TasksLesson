@@ -67,7 +67,7 @@ public class Test2
 
 	public static bool Boolean38(int x1, int y1, int x2, int y2)
 	{
-		return Math.Abs(x1 - x2) == Math.Abs(y1 - y2);
+		return (x1 == x2 || y1 == y2) || Math.Abs(x1 - x2) == Math.Abs(y1 - y2);
 	}
 
 	public static int If13(int a, int b, int c)
@@ -241,8 +241,12 @@ public class Test2
 				for (int k = j + 1; k < points.Length; k++)
 				{
 					Point[] triangle = {points[i], points[j], points[k]};
-					double perimeter = Perimetr(triangle[0].X, triangle[0].Y, triangle[1].X, triangle[1].Y,
+					double perimeter = Perimetr(
+						triangle[0].X, triangle[0].Y,
+						triangle[1].X, triangle[1].Y,
 						triangle[2].X, triangle[2].Y);
+
+
 					if (perimeter > largestPerimeter)
 					{
 						largestPerimeter = perimeter;
