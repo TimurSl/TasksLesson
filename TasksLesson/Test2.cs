@@ -22,7 +22,19 @@ public class Test2
 
 	public static void Main(string[] args)
 	{
-		Series27(5, new float[] {1, 2, 3, 4, 5});
+		Array137(new Point[]
+		{
+			new Point(1, 1),
+			new Point(2, 2),
+			new Point(3, 3),
+			new Point(4, 4),
+			new Point(5, 5),
+			new Point(6, 6),
+			new Point(7, 7),
+			new Point(8, 8),
+			new Point(9, 9),
+			new Point(10, 10),
+		});
 	}
 
 	public static int Integer26(int k)
@@ -144,40 +156,39 @@ public class Test2
 		return result;
 	}
 
-	public static float Leng(Point a, Point b)
+	public static float Leng(float xA, float yA, float xB, float yB)
 	{
-		float x = a.X - b.X;
-		float y = a.Y - b.Y;
+		float x = xA - xB;
+		float y = yA - yB;
 
 		float result = MathF.Sqrt((x * x) + (y * y));
 
 		return Math.Abs(result);
 	}
 
-	public static float Perimetr(Point a, Point b, Point c)
+	public static float Perimetr(float xA, float yA, float xB, float yB, float xC, float yC)
 	{
-		float ab = Leng(a, b);
-		float bc = Leng(b, c);
-		float ac = Leng(a, c);
+		float ab = Leng(xA, yA, xB, yB);
+		float bc = Leng(xB, yB, xC, yC);
+		float ac = Leng(xA, yA, xC, yC);
 
 		return ab + bc + ac;
 	}
 
-	public static void Proc56(Point a, Point b, Point c, Point d)
+	public static void Proc56(float xA, float yA, float xB, float yB, float xC, float yC, float xD, float yD)
 	{
-		double ab = Leng(a, b);
-		double ac = Leng(a, c);
-		double ad = Leng(a, d);
+		float ab = Leng(xA, yA, xB, yB);
+		float ac = Leng(xA, yA, xC, yC);
+		float ad = Leng(xA, yA, xD, yD);
 
-		Console.WriteLine($"AB: {ab}, AC: {ac}, AD: {ad}");
+		float bc = Leng(xB, yB, xC, yC);
 	}
 
-
-	public static void Proc57(Point a, Point b, Point c, Point d)
+	public static void Proc57(float xA, float yA, float xB, float yB, float xC, float yC, float xD, float yD)
 	{
-		double abc = Perimetr(a, b, c);
-		double abd = Perimetr(a, b, d);
-		double acd = Perimetr(a, c, d);
+		double abc = Perimetr(xA, yA, xB, yB, xC, yC);
+		double abd = Perimetr(xA, yA, xB, yB, xD, yD);
+		double acd = Perimetr(xA, yA, xC, yC, xD, yD);
 
 		Console.WriteLine($"ABC: {abc}, ABD: {abd}, ACD: {acd}");
 	}
@@ -230,7 +241,8 @@ public class Test2
 				for (int k = j + 1; k < points.Length; k++)
 				{
 					Point[] triangle = {points[i], points[j], points[k]};
-					double perimeter = Perimetr(triangle[0], triangle[1], triangle[2]);
+					double perimeter = Perimetr(triangle[0].X, triangle[0].Y, triangle[1].X, triangle[1].Y,
+						triangle[2].X, triangle[2].Y);
 					if (perimeter > largestPerimeter)
 					{
 						largestPerimeter = perimeter;
