@@ -200,8 +200,10 @@ public class Test2
 
 		for (int i = numbers.Length - 1; i >= 0; i--)
 		{
-			if (numbers[i] > numbers[max]) max = i;
-			if (numbers[i] < numbers[min]) min = i;
+			if (numbers[i] > numbers[max])
+				max = i;
+			if (numbers[i] < numbers[min])
+				min = i;
 		}
 
 		if (max != min)
