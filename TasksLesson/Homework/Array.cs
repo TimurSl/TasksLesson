@@ -7,51 +7,6 @@ public class Array
 
 	}
 
-	public static bool IsLocalMinimum(int[] array, int index)
-	{
-		if (index == 0 || index == array.Length - 1)
-		{
-			return false;
-		}
-		return array[index] < array[index - 1] && array[index] < array[index + 1];
-	}
-
-	public static bool IsLocalMaximum(int[] array, int index)
-	{
-		if (index == 0 || index == array.Length - 1)
-		{
-			return false;
-		}
-		return array[index] > array[index - 1] && array[index] > array[index + 1];
-	}
-
-	public static void LogArray(int[] array)
-	{
-		Console.WriteLine(ArrayToString(array));
-	}
-
-	public static string ArrayToString(int[] array)
-	{
-		string s = "";
-		for (int i = 0; i < array.Length; i++)
-		{
-			s += array[i] + " ";
-		}
-
-		return s;
-	}
-
-	public static int[] Range(int a, int b = 0)
-	{
-		int[] array = new int[Math.Abs(a - b)];
-		for (int i = 0; i < array.Length; i++)
-		{
-			array[i] = i + Math.Min(a, b);
-		}
-
-		return array;
-	}
-
 	public static int[] Array1(int n)
 	{
 		int[] array = new int[n];
@@ -132,7 +87,7 @@ public class Array
 
 	public static int[] Array7(int n)
 	{
-		int[] array = Range(n).Reverse ().ToArray ();
+		int[] array = ArrayUtilites.Range(n).Reverse ().ToArray ();
 		return array;
 	}
 
@@ -573,7 +528,8 @@ public class Array
 
 		for (int i = 0; i < array.Length; i++)
 		{
-			if (!IsLocalMinimum(array, i) && !IsLocalMaximum(array, i) && array[i] > maxNonLocal)
+			if (!ArrayUtilites.IsLocalMinimum(array, i) && !ArrayUtilites.IsLocalMaximum(array, i) &&
+			    array[i] > maxNonLocal)
 			{
 				maxNonLocal = array[i];
 			}
@@ -686,5 +642,201 @@ public class Array
 		}
 
 		return closestElement;
+	}
+
+	public static Tuple<int, int> Array41(int[] array)
+	{
+		if (array.Length < 2)
+		{
+			return Tuple.Create(0, 0);
+		}
+
+		int maxSum = array[0] + array[1];
+		int firstIndex = 0;
+		int secondIndex = 1;
+
+		for (int i = 1; i < array.Length - 1; i++)
+		{
+			int sum = array[i] + array[i + 1];
+			if (sum > maxSum)
+			{
+				maxSum = sum;
+				firstIndex = i;
+				secondIndex = i + 1;
+			}
+		}
+
+		return Tuple.Create(array[firstIndex], array[secondIndex]);
+	}
+
+	public static Tuple<int, int> Array42(int[] array, int R)
+	{
+		if (array.Length < 2)
+		{
+			return Tuple.Create(0, 0);
+		}
+
+		int closestSum = array[0] + array[1];
+		int firstIndex = 0;
+		int secondIndex = 1;
+
+		for (int i = 1; i < array.Length - 1; i++)
+		{
+			int sum = array[i] + array[i + 1];
+			int diff = Math.Abs(R - sum);
+
+			if (diff < Math.Abs(R - closestSum))
+			{
+				closestSum = sum;
+				firstIndex = i;
+				secondIndex = i + 1;
+			}
+		}
+
+		return Tuple.Create(array[firstIndex], array[secondIndex]);
+	}
+
+
+	public static Tuple<int, int> Array43(int[] array)
+	{
+		if (array.Length == 0)
+		{
+			return Tuple.Create(0, 0);
+		}
+
+		int distinctCount = array.Distinct ().Count ();
+		return Tuple.Create(distinctCount, 0);
+	}
+
+	public static Tuple<int, int> Array44(int[] array)
+	{
+		if (array.Length < 2)
+		{
+			return Tuple.Create(0, 0);
+		}
+
+		for (int i = 0; i < array.Length - 1; i++)
+		{
+			if (array[i] == array[i + 1])
+			{
+				return Tuple.Create(i, i + 1);
+			}
+		}
+
+		return Tuple.Create(0, 0);
+	}
+
+	public static Tuple<int, int> Array45(int[] array)
+	{
+		if (array.Length < 2)
+		{
+			return Tuple.Create(0, 0);
+		}
+
+		int minDiff = Math.Abs(array[0] - array[1]);
+		int firstIndex = 0;
+		int secondIndex = 1;
+
+		for (int i = 0; i < array.Length - 1; i++)
+		{
+			int diff = Math.Abs(array[i] - array[i + 1]);
+			if (diff < minDiff)
+			{
+				minDiff = diff;
+				firstIndex = i;
+				secondIndex = i + 1;
+			}
+		}
+
+		return Tuple.Create(firstIndex, secondIndex);
+	}
+
+	public static Tuple<int, int> Array46(int[] array, int R)
+	{
+		if (array.Length < 2)
+		{
+			return Tuple.Create(0, 0);
+		}
+
+		int closestSum = array[0] + array[1];
+		int firstIndex = 0;
+		int secondIndex = 1;
+
+		for (int i = 0; i < array.Length - 1; i++)
+		{
+			int sum = array[i] + array[i + 1];
+			int diff = Math.Abs(R - sum);
+
+			if (diff < Math.Abs(R - closestSum))
+			{
+				closestSum = sum;
+				firstIndex = i;
+				secondIndex = i + 1;
+			}
+		}
+
+		return Tuple.Create(firstIndex, secondIndex);
+	}
+	public static int Array47(int[] array)
+	{
+		int distinctCount = array.Distinct().Count();
+		return distinctCount;
+	}
+
+	public static int Array48(int[] array)
+	{
+		Dictionary<int, int> elementCounts = new Dictionary<int, int>();
+
+		foreach (int element in array)
+		{
+			if (elementCounts.ContainsKey(element))
+			{
+				elementCounts[element]++;
+			}
+			else
+			{
+				elementCounts[element] = 1;
+			}
+		}
+
+		int maxCount = elementCounts.Values.Max();
+		return maxCount;
+	}
+
+	public static int Array49(int[] array)
+	{
+		int n = array.Length;
+		bool[] seen = new bool[n + 1];
+
+		for (int i = 0; i < n; i++)
+		{
+			int element = array[i];
+			if (element < 1 || element > n || seen[element])
+			{
+				return i + 1;
+			}
+			seen[element] = true;
+		}
+
+		return 0;
+	}
+
+	public static int Array50(int[] array)
+	{
+		int inversions = 0;
+		int n = array.Length;
+
+		for (int i = 0; i < n - 1; i++)
+		{
+			for (int j = i + 1; j < n; j++)
+			{
+				if (array[i] > array[j])
+				{
+					inversions++;
+				}
+			}
+		}
+
+		return inversions;
 	}
 }
